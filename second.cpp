@@ -47,5 +47,6 @@ int main() {
         printf("Многоугольник выпуклый\n");
     else
         printf("Многоугольник не выпуклый\n");
+    free(points);
     return 0;
 }
