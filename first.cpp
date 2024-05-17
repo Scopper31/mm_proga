@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <locale.h>
 
 typedef struct {
     double x;
@@ -19,6 +20,7 @@ int compare(const void* a, const void* b) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Rus");
     int n, i, cnt = 0, max = 0;
     scanf("%d", &n);
     Point* points = (Point*)malloc(2 * n * sizeof(Point));
