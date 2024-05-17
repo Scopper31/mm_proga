@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <locale.h>
+
+
 
 double delta = 1e-6;
 double epsilon = 1e-6;
@@ -40,24 +43,31 @@ double f4(double x) { return x * x * x - 3 * x * x + 2; } // Кубическа�
 double df4(double x) { return 3 * x * x - 6 * x; }
 
 int main() {
+    setlocale(LC_ALL, "Rus");
     printf("Введите отрезок от a до b:\n");
     double a, b;
     scanf("%lf %lf", &a, &b);
-    printf("Введите количество итераций алгоритма:\n");
-    int N;
-    scanf("%d", &N);
+    int N = 2;
 
-    printf("Линейная функция:\n");
-    printf("x_n = %f\n", newton_method(a, b, N, f1)); // Истинный корень: 2
+    for (int i = 0; i < 10 ; ++i)
+    {
+        printf("\n-------------\n");
+        printf("N = %d:\n", N);
+        printf("Линейная функция:\n");
+        printf("x_n = %f\n", newton_method(a, b, N, f1)); // Истинный корень: 2
 
-    printf("\nПарабола:\n");
-    printf("x_n = %f\n", newton_method(a, b, N, f2)); // Истинный корень: sqrt(3)
+        printf("\nПарабола:\n");
+        printf("x_n = %f\n", newton_method(a, b, N, f2)); // Истинный корень: sqrt(3)
 
-    printf("\nСинусоидальная функция:\n");
-    printf("x_n = %f\n", newton_method(a, b, N, f3)); // Истинный корень: 0
+        printf("\nСинусоидальная функция:\n");
+        printf("x_n = %f\n", newton_method(a, b, N, f3)); // Истинный корень: 0
 
-    printf("\nКубическая функция:\n");
-    printf("x_n = %f\n", newton_method(a, b, N, f4)); // Истинные корни: 1 и 2
+        printf("\nКубическая функция:\n");
+        printf("x_n = %f\n", newton_method(a, b, N, f4)); // Истинные корни: 1 и 2
+        N *= 2;
+    }
+    
+
 
     return 0;
 }
