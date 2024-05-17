@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <locale.h>
 
 typedef struct Point {
     double x, y;
@@ -36,6 +37,7 @@ int isConvex(Point points[], int n) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Rus");
     int n, i;
     scanf("%d", &n);
     Point* points = (Point*)malloc(n * sizeof(Point));
